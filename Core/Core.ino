@@ -167,8 +167,14 @@ void pattern1()
   int num_buckets = 30;
   int bucket_size = NUM_LEDS/num_buckets;
   for (int i = 0; i < NUM_LEDS; i++) {
-    for (int i = 0; i < 
-    h_leds[i] = CRGB::Blue;
+    if(magnitudes[i+1] > magnitudes[0])
+    {
+      h_leds[i] = CRGB::Blue;
+    }
+    else
+    {
+      h_leds[i] = CRGB::Black;
+    }
   }
   FastLED.show();
     /*
@@ -331,6 +337,3 @@ void samplingBegin() {
 boolean samplingIsDone() {
   return sampleCounter >= FFT_SIZE*2;
 }
-
-
-
